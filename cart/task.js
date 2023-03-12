@@ -20,11 +20,9 @@ quantityValues.forEach(element => {
         productArticle = event.target.closest('.product').getAttribute('data-id')
         productImagePath = event.target.closest('.product').querySelector('img').src
         productValue = event.target.closest('.product').querySelector('.product__quantity-value').innerText
-        // console.log(productArticle, productImagePath, productValue)
     
         // Product in cart list
         articleInCart = Array.from(document.getElementsByClassName('cart__products')[0].children).map(x => x.getAttribute('data-id'))
-
 
         // Cart adder
         if (document.getElementsByClassName('cart__products')[0].children.length == 0 || !articleInCart.includes(productArticle)) {
@@ -36,6 +34,7 @@ quantityValues.forEach(element => {
             `
         } else {
             currentCartCard = Array.from(document.getElementsByClassName('cart__products')[0].children).find(el => el.getAttribute('data-id') == productArticle)
+            console.log(currentCartCard)
             currentCartCard.querySelector('div.cart__product-count').innerText = Number(currentCartCard.querySelector('div.cart__product-count').innerText) + Number(productValue)
         }
     })
